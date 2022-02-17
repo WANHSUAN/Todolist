@@ -1,0 +1,130 @@
+.font-Cormorant{
+    font-family:"Cormorant Garamond";
+}
+
+.font-Serif{
+    font-family: "Noto Serif TC";
+}
+
+
+.input-form{
+    border: none;
+}
+
+
+.checkbox-button{
+    width: 20px;
+    height: 20px;
+}
+
+
+.wrapper{
+    width: 600px;
+    box-shadow: 5px 5px 20px 5px  #DAD7D1;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.todo__input{
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #DCD7CD;
+    width: 80%;
+}
+
+.btn-new{
+    border: 1px solid #DCD7CD;
+    padding: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    right: 0px;
+    background-color: white;
+    color:#CFC6B9;
+    cursor: pointer;
+}
+
+.add::before,
+.add::after{
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, 50%);
+    width: 20px;
+    border-top: 1px solid;
+}
+
+.add::after{
+    transform: translate(50%, 50%) rotate(90deg);
+}
+
+.todo__hr{
+    border-bottom: 1px solid #DAD7D1;
+}
+
+
+.todo__list{
+    list-style: none;
+    position: relative;
+}
+
+.todo__title{
+    display:inline-block;
+    margin: 5px;
+    
+}
+
+.todo{
+    width: 110%;
+    position: relative;
+    top:0;
+    left: -40px;
+}
+
+.p1{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.btn-delete{
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background-color: white;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    cursor: pointer;
+}
+
+
+.cancel::before,
+.cancel::after{
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 1.5px;
+    top: 60%;
+    background: #CFC6B9;
+}
+
+.cancel::before{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cancel::after{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+.completed {
+    text-decoration: line-through
+  }
+
+
+
+
+

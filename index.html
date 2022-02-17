@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My To Do List</title>
+<link rel="stylesheet" href="css/all.min.css">
+<!-- 字型 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Noto+Serif+TC:wght@200;300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="wrapper font-Serif">
+            <h1 class="text-success text-center mb-3">My To Do List</h1>
+            <!-- 輸入框 -->
+            <div class="position-relative">
+                <input type="text" v-model="newTodo" @click.enter="addTodo" class="todo__input font-Serif text-success" placeholder="準備要做的任務"
+                    id="newTodo"> 
+                <button class="btn-new add font-Serif" @click="addTodo" type="button" id="addTodo"></button>
+            </div>
+            <div class="todo__hr"></div>
+            <!-- 列表 -->
+            <div class="text-center">
+                <ul class="todo__list text-left" id="todoList">
+                    <!-- 事項 -->
+                    <li v-for="item in filterTodos" :key="item.id" class="todo mt-3">
+                        <div class="d-flex">
+                            <div class="todo__title">
+                                <!-- 完成或取消修改內容框 -->
+                                <input v-if="cacheId === item.id" v-model="cacheTitle" @keyup.enter="doneEdit(item)" 
+                                    @keyup.esc="cancelEdit" class="todo__input text-success font-Serif" type="text"> <!--@keyup.esc 使用者按 esc 會離開編輯畫面 -->
+                                <div v-else>
+                                    <!-- 勾選框 -->
+                                    <input :id="item.id" type="checkbox" class="todo__check ms-2" aria-label="Checkbox"
+                                        @click="item.completed = !item.completed" :checked="item.completed">
+                                    <!-- 修改內容 -->
+                                    <label @dblclick="editTodo(item.id, item.title)" :for="item.id" class="p1 text-success ms-3"
+                                        :class="item.completed ? 'completed':''">{{ item.title }}</label> <!-- @dblclick 雙擊click-->
+                                </div>
+                            </div>
+                            <!-- 關閉事項鍵 -->
+                            <button @click="removeTodo(item.id)" type="button" class="btn-delete cancel" aria-label="Close">
+                            </button>
+                        </div>   
+                    </li>
+                </ul>
+
+                <div class="d-flex justify-content-between">
+                    <span class="font-Serif text-success">有 <span id="taskCount" class="">{{ todoList.length }}</span> 筆任務</span>
+                    <div class="">
+                        <a href="#" class="text-decoration-none text-success ms-2" @click.prevent="visibility = 'all'">全部</a>
+                        <a href="#" class="text-decoration-none text-success ms-2" @click.prevent="visibility = 'active'">未完成</a>
+                        <a href="#" class="text-decoration-none text-success ms-2" @click.prevent="visibility = 'completed'">已完成</a>
+                        <a href="#" class="text-decoration-none text-success ms-2" @click.prevent="removeAllTodo">清除所有任務</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="app.js"></script>
+</body>
+</html>
