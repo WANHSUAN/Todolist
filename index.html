@@ -16,7 +16,7 @@
             <h1 class="text-success text-center mb-3">My To Do List</h1>
             <!-- 輸入框 -->
             <div class="position-relative">
-                <input type="text" v-model="newTodo" @click.enter="addTodo" class="todo__input font-Serif text-success" placeholder="準備要做的任務"
+                <input type="text" v-model="newTodo" @keyup.enter="addTodo" class="todo__input font-Serif text-success" placeholder="準備要做的任務"
                     id="newTodo"> 
                 <button class="btn-new add font-Serif" @click="addTodo" type="button" id="addTodo"></button>
             </div>
