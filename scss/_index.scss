@@ -40,7 +40,7 @@
 
 .btn-new{
     border: 1px solid #DCD7CD;
-    padding: 20px;
+    padding: 23px;
     border-radius: 50%;
     position: absolute;
     top: -3px;
@@ -48,6 +48,11 @@
     background-color: white;
     color:#CFC6B9;
     cursor: pointer;
+}
+
+.btn-new:hover{
+    color: white;
+    background-color: #CFC6B9;
 }
 
 .add::before,
