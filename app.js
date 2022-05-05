@@ -1,3 +1,19 @@
+function set(key,val){
+    localStorage.setItem(key,JSON.stringify(val));
+}
+
+function get(key){
+    return JSON.parse(localStorage.getItem(key));
+}
+
+var myStorage = {
+    set : set,
+    get : get
+};
+
+
+
+
 Vue.createApp({
     data() {
         return {
@@ -20,6 +36,9 @@ Vue.createApp({
             }
         }
     },
+    created() {
+        this.todoList = myStorage.get('todoList') || [];
+    },
     methods: {
         // 新增事項
         addTodo() {
@@ -37,7 +56,10 @@ Vue.createApp({
         // 刪除事項
         removeTodo(id) {
             const index = this.todoList.findIndex((item) => item.id === id);
-            this.todoList.splice(index, 1);
+            if(window.confirm('確定要刪除此 Todo?')) {
+                this.todoList.splice(index, 1);
+            }
+            
         },
         // 修改事項
         editTodo(id, title) {
@@ -64,6 +86,18 @@ Vue.createApp({
         removeAllTodo() {
             if(window.confirm('確定要刪除全部 Todo?')) {
                 this.todoList = [];
+            }
+        }
+    },
+    watch : {
+        todoList : {
+            deep : true,
+            handler : function(newVal,oldVal){
+                if(newVal){
+                    myStorage.set('todoList',newVal)
+                }else{
+                    myStorage.set('todoList',oldVal)
+                }
             }
         }
     },
